@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "HotKey",
+        "repositoryURL": "https://github.com/soffes/HotKey",
+        "state": {
+          "branch": null,
+          "revision": "59d991a951f596236aa2b4f9b1f4b67d4a79e65d",
+          "version": "0.1.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
