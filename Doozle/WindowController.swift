@@ -18,6 +18,7 @@ class WindowController: NSWindowController {
 //        window?.level = NSWindow.Level.floating
         window?.hidesOnDeactivate = true
 
+        // Full-screen window
         if let screen = window?.screen ?? NSScreen.main {
             window?.setFrame(screen.visibleFrame, display: true)
         }

@@ -41,7 +41,7 @@ class WebViewController: NSViewController, WKUIDelegate, WKNavigationDelegate {
     } // end func
     
     func clear() {
-        let js = "clear()"
+        let js = "reset()"
         myWebView.evaluateJavaScript(js) { (result, error) in
             if error != nil {
                 print(result!)
@@ -51,7 +51,15 @@ class WebViewController: NSViewController, WKUIDelegate, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Show custom mouse cursor
+        if let image = NSImage(named:NSImage.Name("cursor.png")) {
+            print(image)
+            let spot = NSPoint(x: 0, y: 0)
+            let customCursor = NSCursor(image: image, hotSpot: spot)
+            view.addCursorRect(view.frame, cursor:customCursor)
+        }
+        
         let configuration = WKWebViewConfiguration()
         myWebView = WKWebView(frame: .zero, configuration: configuration)
         myWebView.translatesAutoresizingMaskIntoConstraints = false

@@ -7,12 +7,20 @@
 //
 
 import Cocoa
-    
+//import Carbon
+//import HotKey
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
 
+        // Setup global hot key for ⌥⌘D
+//        let hotKey = HotKey(key: .d, modifiers: [.command, .option])
+//
+//        hotKey.keyDownHandler = {
+//            print("Pressed at \(Date())")
+//        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
