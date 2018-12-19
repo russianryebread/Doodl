@@ -38,7 +38,7 @@
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "Doozle.256.png",
+      "filename" : "Icon.png",
       "scale" : "2x"
     },
     {
@@ -49,7 +49,7 @@
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "Doozle.512.png",
+      "filename" : "Icon@2x.png",
       "scale" : "2x"
     }
   ],

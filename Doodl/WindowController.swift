@@ -7,9 +7,8 @@
 //
 
 import Cocoa
-import HotKey
 
-class WindowController: NSWindowController {
+class WindowController: NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -23,6 +22,28 @@ class WindowController: NSWindowController {
         // Full-screen window
         if let screen = window?.screen ?? NSScreen.main {
             window?.setFrame(screen.visibleFrame, display: true)
+        }
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(cursor),
+            name: NSWindow.didBecomeKeyNotification,
+            object: nil
+        )
+        
+    }
+    
+    @objc func cursor() {
+        print("key")
+        if let image = NSImage(named:NSImage.Name("cursor.png")) {
+            NSCursor(image: image, hotSpot: NSPoint(x: 0, y: 30)).set()
+        }
+    }
+    
+    func windowDidBecomeKey(_ notification: Notification) {
+        print("windowDidBecomeKey")
+        if let image = NSImage(named:NSImage.Name("cursor.png")) {
+            NSCursor(image: image, hotSpot: NSPoint(x: 0, y: 30)).set()
         }
     }
 
