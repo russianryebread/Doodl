@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import HotKey
 
 class WindowController: NSWindowController {
 
@@ -17,6 +18,7 @@ class WindowController: NSWindowController {
         window?.backgroundColor = NSColor.clear
 //        window?.level = NSWindow.Level.floating
         window?.hidesOnDeactivate = true
+        window?.ignoresMouseEvents = false
 
         // Full-screen window
         if let screen = window?.screen ?? NSScreen.main {

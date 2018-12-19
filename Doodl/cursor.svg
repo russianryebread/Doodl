@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-616.676,-478.396)">
+        <g transform="matrix(0.707107,0.707107,-0.707107,0.707107,1126.39,-507.895)">
+            <path d="M1077.56,549.147L1077.56,1650L1174.24,1839.1L1275,1650L1275,545.693L1275,372.352L1078.45,372.352L1077.56,549.147Z" style="fill:none;stroke:black;stroke-width:79.17px;"/>
+        </g>
+        <g transform="matrix(-1.12289,-1.1481,0.547225,-0.535211,627.05,3278.06)">
+            <path d="M724.196,1537.91L752.998,1650C752.998,1650 734.397,1674.84 724.796,1674.84C715.196,1674.84 695.394,1650 695.394,1650L724.196,1537.91Z"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-9.50808,-5.63681)">
+            <g transform="matrix(2.20508,2.2061,-0.697397,0.697721,-1314.42,-3095.74)">
+                <rect x="1488.74" y="589.907" width="63.13" height="1182.03" style="fill:rgb(255,185,22);"/>
+            </g>
+            <g transform="matrix(0.885499,0.885911,-0.697512,0.697836,688.616,-1091.61)">
+                <rect x="1488.74" y="589.907" width="63.13" height="1182.03" style="fill:rgb(255,204,22);"/>
+            </g>
+        </g>
+        <g transform="matrix(0.532102,0.532102,-0.468122,0.468122,1002.24,-589.269)">
+            <rect x="1624.3" y="517.98" width="261.737" height="203.704" style="fill:rgb(246,146,92);"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-1,1)">
+            <path d="M687.047,1532.44L724.112,1417.56C724.112,1417.56 864.044,1556.67 864.044,1557.64C864.044,1558.62 747.118,1593.72 747.118,1593.72C747.118,1593.72 739.165,1558.25 729.153,1548.04C719.141,1537.82 687.047,1532.44 687.047,1532.44Z" style="fill:rgb(255,159,0);"/>
+        </g>
+    </g>
+</svg>
