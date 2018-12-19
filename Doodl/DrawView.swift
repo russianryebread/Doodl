@@ -18,6 +18,7 @@ class DrawView: NSView {
     var timer: Timer?
     
     override func mouseDown(with event: NSEvent) {
+        NotificationCenter.default.post(name: Notification.Name("mouseDown"), object: nil)
         path.move(to: convert(event.locationInWindow, from: nil))
         needsDisplay = true
         drawing = true
@@ -25,12 +26,14 @@ class DrawView: NSView {
     }
     
     override func mouseDragged(with event: NSEvent) {
+        NotificationCenter.default.post(name: Notification.Name("mouseDragged"), object: nil)
         path.line(to: convert(event.locationInWindow, from: nil))
         needsDisplay = true
         drawing = true
     }
     
     override func mouseUp(with event: NSEvent) {
+        NotificationCenter.default.post(name: Notification.Name("mouseUp"), object: nil)
         drawing = false
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
@@ -50,6 +53,12 @@ class DrawView: NSView {
         path.lineWidth = LINE_WIDTH
         path.stroke()
         
+    }
+    
+    override func resetCursorRects() {
+        if let cursorImage = NSImage(named:NSImage.Name("cursor.png")) {
+            self.addCursorRect(self.bounds, cursor: NSCursor(image: cursorImage, hotSpot: NSPoint(x: 0, y: 30)))
+        }
     }
     
 }

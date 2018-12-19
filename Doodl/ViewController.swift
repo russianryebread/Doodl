@@ -1,5 +1,7 @@
 
 import Cocoa
+import HotKey
+import Carbon
 
 class ViewController: NSViewController {
     
@@ -19,6 +21,8 @@ class ViewController: NSViewController {
             anchor in
             anchor.isActive = true
         }
+        
+        drawView.resetCursorRects()
         
     }
 

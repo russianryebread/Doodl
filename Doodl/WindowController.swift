@@ -24,26 +24,21 @@ class WindowController: NSWindowController, NSWindowDelegate {
             window?.setFrame(screen.visibleFrame, display: true)
         }
         
+        // Move to the active screen whenever we activate
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(cursor),
-            name: NSWindow.didBecomeKeyNotification,
+            selector: #selector(objc_active),
+            name: NSApplication.didBecomeActiveNotification,
             object: nil
         )
-        
     }
     
-    @objc func cursor() {
-        print("key")
-        if let image = NSImage(named:NSImage.Name("cursor.png")) {
-            NSCursor(image: image, hotSpot: NSPoint(x: 0, y: 30)).set()
-        }
-    }
-    
-    func windowDidBecomeKey(_ notification: Notification) {
-        print("windowDidBecomeKey")
-        if let image = NSImage(named:NSImage.Name("cursor.png")) {
-            NSCursor(image: image, hotSpot: NSPoint(x: 0, y: 30)).set()
+    @objc func objc_active() {
+        print("Active Notif")
+        if(self.window?.screen != NSScreen.main) {
+            if let s = NSScreen.main {
+                self.window?.setFrame(s.frame, display: true)
+            }
         }
     }
 
