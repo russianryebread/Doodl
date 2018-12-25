@@ -9,7 +9,6 @@
 import Cocoa
 import Carbon
 import Carbon.HIToolbox
-//import HotKey
 import Magnet
 
 @NSApplicationMain
