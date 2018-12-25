@@ -17,7 +17,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let cursorImage = NSImage(named:NSImage.Name("cursor.png"))
-
+    
+    var prefsVc: PreferencesView?
+    var prefsWindow: NSWindow?
+    var prefsOpen: Bool = false
+    
     var timer: Timer = Timer.init()
     
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -43,9 +47,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func setCursor(){
-        NSCursor(image: cursorImage!, hotSpot: NSPoint(x: 0, y: 30)).set()
+        PencilCursor.set()
     }
-
+    
     func activate() {
         self.timer.invalidate()
         NSApp.activate(ignoringOtherApps: true)
@@ -62,14 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func setupHotkeys() {
-        // Setup global hot key for ⌥⌘⇧D
-//        let hotKey = HotKey(key: .d, modifiers: [.control, .option])
-//        hotKey.keyDownHandler = {
-//            print("Doodl hotkey activate!")
-//            NSApp.activate(ignoringOtherApps: true)
-//        }
-        
-        //if let keyCombo = KeyCombo(doubledCarbonModifiers: controlKey) {
+        // Setup global hot key for ⌘⇧D
         if let keyCombo = KeyCombo(keyCode: kVK_ANSI_D, cocoaModifiers: [.shift, .command]) {
             let hotKey = HotKey(identifier: "CommandShiftD", keyCombo: keyCombo) { hotKey in
                 self.activate()
@@ -113,6 +110,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @objc func objc_prefs() {
+        // Only allow one window to open.
+        if prefsVc == nil {
+            let storyboard = NSStoryboard(name: "Main", bundle: nil)
+            prefsVc = storyboard.instantiateController(withIdentifier: Constants.PreferencesView) as? PreferencesView
+        }
+        
+        if prefsWindow == nil {
+            prefsWindow = NSWindow(contentViewController: prefsVc!)
+        }
+        
+        prefsWindow!.makeKeyAndOrderFront(self)
+        PreferencesWindowController(window: prefsWindow!).showWindow(self)
+        
+        timer.invalidate()
+        NSApp.activate(ignoringOtherApps: true)
+        prefsOpen = true
+    }
     
     func constructMenu() {
         
@@ -124,6 +139,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem(title: "Draw", action: #selector(objc_activate), keyEquivalent: "D"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "About", action: #selector(objc_about), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(objc_prefs), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Quit Doodl", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         statusItem.menu = menu
     }
